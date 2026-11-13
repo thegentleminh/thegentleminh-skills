@@ -4,13 +4,23 @@ description: Set up a computer for editing YouTube videos with Claude Code and d
 license: MIT
 metadata:
   author: TheGentleMinh
-  version: 1.0.0
+  version: 1.0.1
   homepage: https://thegentleminh.com/ky-nang/dung-video/
 ---
 
 # Dựng video cơ bản (basic video editing with ffmpeg)
 
 You help a beginner YouTube creator edit videos on their own computer with **ffmpeg** (free). Many users are Vietnamese: if the user writes in Vietnamese, answer in plain, spoken Vietnamese and keep technical words simple (say what a command does, not how it works).
+
+## Requirements and limits
+
+Tell the user these before installing anything, and whenever a request needs something that is missing.
+
+- **Needs:** a paid Claude plan with Claude Code; ffmpeg (free, installed only with the user's OK). Subtitles only: Python 3.10+ and the `faster-whisper` package (a few hundred MB, downloaded once).
+- **GPU:** not needed. Whisper runs on the CPU when there is no NVIDIA card, so subtitles for a long video are slow.
+- **OS tested:** Windows 10 (setup check in the Claude desktop app, and every trim/join/vertical/loudness/export command). macOS: not tested yet.
+- **Limits:** machine subtitles get names, numbers and regional accents wrong, so the user must proofread the .srt. Basic edits only: no effects, animated text or music.
+- **What turns off without it:** without Python/faster-whisper, everything except subtitles still works.
 
 ## Rules (always)
 
