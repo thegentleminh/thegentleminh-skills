@@ -4,7 +4,7 @@ description: Set up a computer for editing YouTube videos with Claude Code and d
 license: MIT
 metadata:
   author: TheGentleMinh
-  version: 1.0.1
+  version: 1.0.2
   homepage: https://thegentleminh.com/ky-nang/dung-video/
 ---
 
@@ -128,7 +128,14 @@ Adjust `-b:v` and `-g` (half the frame rate) to the video; for 60 fps use `-b:v 
 `ffmpeg -n -ss 00:00:42 -i "raw/input.mp4" -frames:v 1 -vf "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2" -q:v 2 "exports/khung-0042.jpg"`
 Offer 3-4 frames at different times so the user can choose. YouTube's thumbnail rules (size, 16:9, JPG/PNG, file size) are in [YouTube Help 72431](https://support.google.com/youtube/answer/72431).
 
-## When something fails
+## If something goes wrong
+This skill was written with Claude Code, so it may have bugs, and every computer is different. When a step fails, or the user says the skill did something wrong:
+1. **Explain it plainly, in Vietnamese:** what failed and why, in one or two sentences. No raw stack traces unless the user asks.
+2. **Read this skill and the command that ran.** Find the cause (the list below covers the common ones).
+3. **Fix it and re-run**, writing a new file in `exports/`. Never touch or overwrite the user's originals, even while fixing.
+4. If the cause was in this skill itself (a wrong command or a missing step), say so, and suggest reporting it so it gets fixed for everyone: https://github.com/thegentleminh/thegentleminh-skills/issues
+
+### Common failures
 - `'ffmpeg' is not recognized` / `command not found`: ffmpeg is not installed or the terminal was opened before installing; open a new terminal and check again.
 - `No such file or directory`: check the path and the quotes; list the folder to find the exact name.
 - `already exists. Exiting.`: the output name is taken; pick a new name (never overwrite).

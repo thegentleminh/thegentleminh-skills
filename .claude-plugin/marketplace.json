@@ -7,7 +7,7 @@
       "name": "dung-video",
       "source": "./plugins/dung-video",
       "description": "Set up video editing with Claude Code and do basic edits with ffmpeg: trim, join, vertical Shorts, Vietnamese subtitles, loudness, YouTube export, thumbnail frames.",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "video"
     }
   ]
