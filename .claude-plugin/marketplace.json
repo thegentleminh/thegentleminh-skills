@@ -1,0 +1,14 @@
+{
+  "name": "thegentleminh",
+  "description": "Free Claude Code skills from TheGentleMinh for YouTube creators",
+  "owner": { "name": "TheGentleMinh", "url": "https://thegentleminh.com" },
+  "plugins": [
+    {
+      "name": "dung-video",
+      "source": "./plugins/dung-video",
+      "description": "Set up video editing with Claude Code and do basic edits with ffmpeg: trim, join, vertical Shorts, Vietnamese subtitles, loudness, YouTube export, thumbnail frames.",
+      "version": "1.0.0",
+      "category": "video"
+    }
+  ]
+}

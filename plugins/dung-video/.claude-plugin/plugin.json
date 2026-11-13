@@ -1,0 +1,8 @@
+{
+  "name": "dung-video",
+  "description": "Set up video editing with Claude Code and do basic edits with ffmpeg: trim, join, vertical Shorts, Vietnamese subtitles, loudness, YouTube export, thumbnail frames.",
+  "version": "1.0.0",
+  "author": { "name": "TheGentleMinh", "url": "https://thegentleminh.com" },
+  "homepage": "https://thegentleminh.com/ky-nang/dung-video/",
+  "license": "MIT"
+}
