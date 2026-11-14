@@ -14,6 +14,20 @@
       "name": "video-giai-thich",
       "source": "./plugins/video-giai-thich",
       "description": "Vietnamese animated explainer videos (9:16) from a topic: spoken-Vietnamese script, voice (ElevenLabs, your own or none), words timed to the voice, five looks. Renders with HyperFrames.",
+      "version": "0.1.1",
+      "category": "video"
+    },
+    {
+      "name": "tach-nguoi",
+      "source": "./plugins/tach-nguoi",
+      "description": "Person cut-out effects on your own clip: big text behind the person, freeze-frame character intro with a name card, freeze snap / comic freeze, clones. Vietnamese text done right.",
+      "version": "0.1.0",
+      "category": "video"
+    },
+    {
+      "name": "anh-thanh-video",
+      "source": "./plugins/anh-thanh-video",
+      "description": "Turn photos into a video: beat-synced photo edits, gentle photo albums or a 2.5D 3D zoom, faces kept in frame, Vietnamese titles, any shape.",
       "version": "0.1.0",
       "category": "video"
     }

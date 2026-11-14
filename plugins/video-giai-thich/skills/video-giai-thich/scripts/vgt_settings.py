@@ -20,6 +20,8 @@ OPTIONS = {
     "handle": ("", None, "channel name shown small at the top (empty = none)"),
 }
 
+OPTIONAL = {"voice_id", "music_file"}  # only asked when voice=elevenlabs / music=own
+
 QUESTIONS_VI = {  # what Claude asks, in this order
     "look": "Bạn muốn video theo kiểu nào? (In riso / Bảng phấn / Báo giấy / Bản vẽ / Poster)",
     "voice": "Ai đọc lời? (Giọng ElevenLabs / Bạn tự thu / Không có giọng, chỉ có chữ)",
@@ -38,12 +40,17 @@ def path():
 def load():
     p = path()
     s = {k: v[0] for k, v in OPTIONS.items()}
-    if p.exists():
-        s.update(json.loads(p.read_text(encoding="utf-8")))
-        s["_saved"] = True
-    else:
-        s["_saved"] = False
+    saved = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+    s.update(saved)
+    s["_missing"] = [k for k in OPTIONS if k not in OPTIONAL and k not in saved]
+    s["_saved"] = not s["_missing"]
     return s
+
+
+def save_defaults():
+    """The user said "cứ làm đi" / "mặc định": answer every remaining question with its default."""
+    cur = load()
+    return save({k: OPTIONS[k][0] for k in cur["_missing"]}) if cur["_missing"] else path()
 
 
 def save(updates):

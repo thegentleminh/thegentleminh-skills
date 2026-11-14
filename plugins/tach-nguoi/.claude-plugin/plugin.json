@@ -1,0 +1,8 @@
+{
+  "name": "tach-nguoi",
+  "version": "0.1.0",
+  "description": "Person cut-out effects for short videos: text behind the person, freeze-frame character intro, freeze snap / comic freeze, clones. Vietnamese text done right.",
+  "author": { "name": "TheGentleMinh", "url": "https://thegentleminh.com" },
+  "homepage": "https://thegentleminh.com/ky-nang/tach-nguoi/",
+  "license": "MIT (scripts/rvm_matte.py: GPL-3.0)"
+}

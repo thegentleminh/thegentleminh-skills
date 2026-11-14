@@ -1,0 +1,8 @@
+{
+  "name": "anh-thanh-video",
+  "version": "0.1.0",
+  "description": "Turn photos into a video: beat-synced photo edits (flash, pop, shake, snap-and-ease camera moves), gentle photo albums with faces kept in frame, 2.5D parallax. Any song you own, any number of photos, Vietnamese text done right.",
+  "author": { "name": "TheGentleMinh", "url": "https://thegentleminh.com" },
+  "homepage": "https://thegentleminh.com/ky-nang/anh-thanh-video/",
+  "license": "MIT"
+}

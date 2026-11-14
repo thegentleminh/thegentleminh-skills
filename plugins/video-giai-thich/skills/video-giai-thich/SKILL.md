@@ -4,7 +4,7 @@ description: Make a Vietnamese animated explainer video (9:16, TikTok / Reels / 
 license: MIT
 metadata:
   author: TheGentleMinh
-  version: 0.1.0
+  version: 0.1.1
   status: release candidate - tested on Windows 10 (install from a clean copy, fresh-user run)
   homepage: https://thegentleminh.com/ky-nang/video-giai-thich/
   renders-with: HyperFrames (Apache-2.0, https://github.com/heygen-com/hyperframes)
@@ -56,7 +56,8 @@ Tell the user these before installing anything, and whenever a request needs som
 ## Setup (first time only)
 
 Run `python scripts/vgt.py settings`. If it says **NOT saved yet**, ask these questions **one at a time**,
-in the user's language. Every question offers its options plus:
+in the user's language; if it says **NOT finished**, ask only the ones it lists. If the user says "cứ làm đi" or
+"mặc định", run `python scripts/vgt.py settings defaults` and move on. Every question offers its options plus:
 - **"Mình chưa rõ, giải thích giúp"** → explain each option in a sentence or two, then ask again.
 - **"Cho xem hết để so sánh"** → show the comparison listed in the table, then ask again.
 

@@ -148,8 +148,11 @@ def cmd_settings(a):
     if a.action == "set":
         upd = dict(p.split("=", 1) for p in a.pairs)
         print("saved:", S.save(upd))
+    if a.action == "defaults":
+        print("defaults saved:", S.save_defaults())
     s = S.load()
-    print("Settings", "(saved)" if s["_saved"] else "(NOT saved yet: run the setup questions)", "-", S.path())
+    st = ("saved" if s["_saved"] else ("NOT saved yet: run the setup questions" if len(s["_missing"]) == len(S.OPTIONS) - len(S.OPTIONAL) else "NOT finished: still ask " + ", ".join(s["_missing"])))
+    print("Settings", f"({st})", "-", S.path())
     for k, (d, allowed, what) in S.OPTIONS.items():
         print(f"  {k:10s} = {s[k]!s:24s} {what}" + (f"  [{', '.join(allowed)}]" if allowed else ""))
 
@@ -437,7 +440,7 @@ def main():
     s.add_argument("--out", required=True); s.add_argument("--music", default="")
     s = sub.add_parser("sync"); s.add_argument("project"); s.add_argument("--tail", type=float, default=0.6)
     s = sub.add_parser("finish"); s.add_argument("src"); s.add_argument("out"); s.add_argument("--music", default="")
-    s = sub.add_parser("settings"); s.add_argument("action", nargs="?", default="show", choices=["show", "set", "reset"])
+    s = sub.add_parser("settings"); s.add_argument("action", nargs="?", default="show", choices=["show", "set", "reset", "defaults"])
     s.add_argument("pairs", nargs="*", help="key=value")
     s = sub.add_parser("new"); s.add_argument("project")
     sub.add_parser("doctor")
