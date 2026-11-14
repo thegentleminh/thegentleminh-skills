@@ -1,0 +1,21 @@
+/* Báo giấy: newsprint, black serif headlines, one red, thin column rules. */
+@font-face { font-family: "Playfair"; font-weight: 400 900; src: url("fonts/PlayfairDisplay-Variable.ttf"); }
+@font-face { font-family: "BVP"; font-weight: 800; src: url("fonts/BeVietnamPro-ExtraBold.ttf"); }
+[data-look="bao-giay"] {
+  --paper: #eee8da; --ink: #1a1a1a; --hl: #b3122a; --hl-bg: transparent; --accent: #b3122a; --soft: #d3cbb9; --dot: #1a1a1a;
+  --c1: #b3122a; --c2: #d4621f; --c3: #d9a520; --c4: #3f7a4a; --c5: #2a5d9a; --c6: #3b3f7a; --c7: #6b3f86; --warm: #d4621f; --warm-ink: #8f3d0f;
+  --say-font: "Playfair"; --say-weight: 900; --say-size: 92px; --say-lh: 1.12; --say-tracking: -0.015em; --say-case: none;
+  --say-shadow: none; --hl-shadow: none;
+  --label-font: "BVP"; --label-weight: 800; --label-size: 40px; --label-case: uppercase;
+  --dusk: linear-gradient(180deg, rgba(212, 98, 31, 0.45) 0%, rgba(179, 18, 42, 0.18) 55%, rgba(0, 0, 0, 0) 100%);
+}
+[data-look="bao-giay"] #paper {
+  background:
+    linear-gradient(var(--ink), var(--ink)) 64px 196px / 952px 6px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 64px 208px / 952px 2px no-repeat,
+    linear-gradient(rgba(26, 26, 26, 0.25), rgba(26, 26, 26, 0.25)) 40px 196px / 1px 1100px no-repeat,
+    linear-gradient(rgba(26, 26, 26, 0.25), rgba(26, 26, 26, 0.25)) 1039px 196px / 1px 1100px no-repeat,
+    var(--paper);
+}
+[data-look="bao-giay"] .say .hl { font-style: italic; }
+[data-look="bao-giay"] .say .hlg { margin-right: 0.12em; }

@@ -9,6 +9,13 @@
       "description": "Set up video editing with Claude Code and do basic edits with ffmpeg: trim, join, vertical Shorts, Vietnamese subtitles, loudness, YouTube export, thumbnail frames.",
       "version": "1.0.2",
       "category": "video"
+    },
+    {
+      "name": "video-giai-thich",
+      "source": "./plugins/video-giai-thich",
+      "description": "Vietnamese animated explainer videos (9:16) from a topic: spoken-Vietnamese script, voice (ElevenLabs, your own or none), words timed to the voice, five looks. Renders with HyperFrames.",
+      "version": "0.1.0",
+      "category": "video"
     }
   ]
 }

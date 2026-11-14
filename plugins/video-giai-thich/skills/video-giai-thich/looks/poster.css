@@ -1,0 +1,15 @@
+/* Poster: Swiss-style poster, huge condensed capitals, black + one red, highlights on solid red blocks. */
+@font-face { font-family: "Anton"; font-weight: 400; src: url("fonts/Anton-Regular.ttf"); }
+@font-face { font-family: "BVP"; font-weight: 800; src: url("fonts/BeVietnamPro-ExtraBold.ttf"); }
+[data-look="poster"] {
+  --paper: #f3f0e8; --ink: #111111; --hl: #ffffff; --hl-bg: #e4002b; --accent: #e4002b; --soft: #d8d3c6; --dot: #111111;
+  --c1: #e4002b; --c2: #ff6a13; --c3: #ffc20e; --c4: #00965e; --c5: #0057b8; --c6: #2e1a87; --c7: #7a1fa2; --warm: #ff6a13; --warm-ink: #b8460a;
+  --say-font: "Anton"; --say-weight: 400; --say-size: 108px; --say-lh: 1.42; --say-tracking: 0.005em; --say-case: uppercase;
+  --say-shadow: none; --hl-shadow: none;
+  --label-font: "BVP"; --label-weight: 800; --label-size: 40px; --label-case: uppercase;
+  --dusk: linear-gradient(180deg, rgba(255, 106, 19, 0.5) 0%, rgba(228, 0, 43, 0.2) 55%, rgba(0, 0, 0, 0) 100%);
+}
+[data-look="poster"] #paper {
+  background: linear-gradient(var(--ink), var(--ink)) 64px 168px / 180px 14px no-repeat, var(--paper);
+}
+[data-look="poster"] .say .hlg { padding: 0.1em 0.12em 0.04em; margin: 0 -0.04em; line-height: 1.1; }

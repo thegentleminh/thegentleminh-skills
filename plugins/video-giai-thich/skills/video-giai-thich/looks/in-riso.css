@@ -1,0 +1,11 @@
+/* In riso: cream paper, two inks (blue + fluorescent pink), halftone dots, a slightly off-register pink shadow. */
+@font-face { font-family: "BVP"; font-weight: 900; src: url("fonts/BeVietnamPro-Black.ttf"); }
+@font-face { font-family: "BVP"; font-weight: 800; src: url("fonts/BeVietnamPro-ExtraBold.ttf"); }
+[data-look="in-riso"] {
+  --paper: #f2ecdf; --ink: #1e3c8c; --hl: #cc2a83; --hl-bg: transparent; --accent: #ff3ea5; --soft: #d9cfb8; --dot: #1f6fd1;
+  --c1: #e8322e; --c2: #ff7a1a; --c3: #ffd60a; --c4: #2ba84a; --c5: #1f6fd1; --c6: #3a3fa8; --c7: #8a3fd1; --warm: #ff7a1a; --warm-ink: #a84e10;
+  --say-font: "BVP"; --say-weight: 900; --say-size: 84px; --say-lh: 1.2; --say-tracking: -0.01em; --say-case: none;
+  --say-shadow: 5px 4px 0 rgba(255, 62, 165, 0.42); --hl-shadow: 5px 4px 0 rgba(30, 60, 140, 0.35);
+  --label-font: "BVP"; --label-weight: 800; --label-size: 46px; --label-case: none;
+  --dusk: linear-gradient(180deg, #ff9a3c 0%, #ff5fa2 55%, rgba(255, 95, 162, 0) 100%);
+}

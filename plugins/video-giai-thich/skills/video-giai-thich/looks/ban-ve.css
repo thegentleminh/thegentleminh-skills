@@ -1,0 +1,20 @@
+/* Bản vẽ: blueprint blue, white grid, technical capitals, yellow marks. */
+@font-face { font-family: "Chakra"; font-weight: 700; src: url("fonts/ChakraPetch-Bold.ttf"); }
+@font-face { font-family: "SpaceMono"; font-weight: 700; src: url("fonts/SpaceMono-Bold.ttf"); }
+[data-look="ban-ve"] {
+  --paper: #123f7a; --ink: #eef4ff; --hl: #ffd23f; --hl-bg: transparent; --accent: #ffd23f; --soft: #1d528f; --dot: #8fd3ff;
+  --c1: #ff7b72; --c2: #ffa657; --c3: #ffd23f; --c4: #7ee787; --c5: #8fd3ff; --c6: #a5b4ff; --c7: #d2a8ff; --warm: #ffa657; --warm-ink: #ffa657;
+  --say-font: "Chakra"; --say-weight: 700; --say-size: 76px; --say-lh: 1.36; --say-tracking: 0.01em; --say-case: uppercase;
+  --say-shadow: none; --hl-shadow: none;
+  --label-font: "SpaceMono"; --label-weight: 700; --label-size: 40px; --label-case: none;
+  --dusk: linear-gradient(180deg, rgba(255, 166, 87, 0.35) 0%, rgba(255, 123, 114, 0.15) 55%, rgba(0, 0, 0, 0) 100%);
+}
+[data-look="ban-ve"] #paper {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.16) 2px, transparent 2px) 0 0 / 200px 200px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16) 2px, transparent 2px) 0 0 / 200px 200px,
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 40px 40px,
+    var(--paper);
+}
+[data-look="ban-ve"] #dusk { mix-blend-mode: screen; }

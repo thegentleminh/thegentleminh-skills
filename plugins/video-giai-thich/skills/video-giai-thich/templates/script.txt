@@ -1,0 +1,2 @@
+# One line per scene: [id] sentence / next sentence. *highlight*  giữ_liền  {6|sáu} = show 6, say "sáu"
+[s1] Đây là câu *mở đầu* của video.

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="vi" data-composition-variables='[{"id":"look","type":"enum","label":"Look","default":"{{LOOK}}","options":[{"value":"in-riso","label":"In riso"},{"value":"bang-phan","label":"Bảng phấn"},{"value":"bao-giay","label":"Báo giấy"},{"value":"ban-ve","label":"Bản vẽ"},{"value":"poster","label":"Poster"}]},{"id":"reveal","type":"enum","label":"Text","default":"{{REVEAL}}","options":[{"value":"word","label":"Từng chữ"},{"value":"sentence","label":"Cả câu"}]},{"id":"handle","type":"string","label":"Channel name","default":"{{HANDLE}}"}]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link rel="stylesheet" href="looks/in-riso.css" />
+    <link rel="stylesheet" href="looks/bang-phan.css" />
+    <link rel="stylesheet" href="looks/bao-giay.css" />
+    <link rel="stylesheet" href="looks/ban-ve.css" />
+    <link rel="stylesheet" href="looks/poster.css" />
+    <link rel="stylesheet" href="vgt/vgt-base.css" />
+    <script src="vgt/vgt-timing.js"></script>
+    <script src="vgt/vgt-runtime.js"></script>
+    <style>
+      /* scene-specific styles go here; colours and fonts only through the look tokens (var(--ink), var(--c1)...) */
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="10" data-width="1080" data-height="1920">
+      <div id="paper"></div>
+      <div id="dusk"></div>
+
+      <!-- One <section> per script line, same id as in script.txt. `vgt.py sync` sets the times.
+           The sentence band (top) is filled from the script automatically; draw pictures in .art (y 600-1280). -->
+      <section id="s1" class="scene clip" data-start="0" data-duration="10" data-track-index="1">
+        <div class="art">
+          <div id="s1-dot" style="position:absolute;left:440px;top:240px;width:200px;height:200px;border-radius:50%;background:var(--accent);"></div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      vgtStart((tl) => {
+        // time things to the voice: T("s1", 0.3) = 0.3 s into scene s1; W("s1", "word") = when "word" is said
+        tl.fromTo("#s1-dot", { scale: 0 }, { scale: 1, duration: 0.6, ease: "back.out(2)" }, T("s1", 0.2));
+      }, (tl) => {
+        window.__timelines["main"] = tl;
+        if (window.__hfForceTimelineRebind) window.__hfForceTimelineRebind();
+      });
+    </script>
+  </body>
+</html>

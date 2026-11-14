@@ -1,0 +1,8 @@
+{
+  "name": "video-giai-thich",
+  "version": "0.1.0",
+  "description": "Vietnamese animated explainer videos (9:16): spoken-Vietnamese script, voice timing, five looks, rendered with HyperFrames.",
+  "author": { "name": "TheGentleMinh" },
+  "homepage": "https://thegentleminh.com/ky-nang/video-giai-thich/",
+  "license": "MIT"
+}

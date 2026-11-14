@@ -1,0 +1,20 @@
+/* Bảng phấn: green chalkboard, hand-written chalk letters with a rough, dusty edge. */
+@font-face { font-family: "Pangolin"; font-weight: 400; src: url("fonts/Pangolin-Regular.ttf"); }
+[data-look="bang-phan"] {
+  --paper: #23423a; --ink: #f3efe4; --hl: #ffe27a; --hl-bg: transparent; --accent: #ffa8b8; --soft: #3d5e54; --dot: #bfe3ff;
+  --c1: #ff8a80; --c2: #ffb870; --c3: #ffe27a; --c4: #a8e6a1; --c5: #8fc8ff; --c6: #a9a3ff; --c7: #d6a6ff; --warm: #ffb870; --warm-ink: #ffb870;
+  --say-font: "Pangolin"; --say-weight: 400; --say-size: 96px; --say-lh: 1.22; --say-tracking: 0; --say-case: none;
+  --say-shadow: none; --hl-shadow: none;
+  --label-font: "Pangolin"; --label-weight: 400; --label-size: 52px; --label-case: none;
+  --dusk: linear-gradient(180deg, rgba(255, 170, 110, 0.55) 0%, rgba(255, 120, 150, 0.25) 55%, rgba(0, 0, 0, 0) 100%);
+}
+[data-look="bang-phan"] #paper {
+  background:
+    radial-gradient(ellipse 60% 30% at 30% 25%, rgba(255, 255, 255, 0.07), transparent 70%),
+    radial-gradient(ellipse 50% 25% at 75% 70%, rgba(255, 255, 255, 0.05), transparent 70%),
+    radial-gradient(ellipse 120% 80% at 50% 50%, transparent 60%, rgba(0, 0, 0, 0.35) 100%),
+    var(--paper);
+}
+[data-look="bang-phan"] .say, [data-look="bang-phan"] .art, [data-look="bang-phan"] .label { filter: url(#chalk); }
+[data-look="bang-phan"] #dusk { mix-blend-mode: screen; }
+[data-look="bang-phan"] .say { -webkit-text-stroke: 1.5px currentColor; }
