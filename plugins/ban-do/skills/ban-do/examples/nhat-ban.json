@@ -1,0 +1,14 @@
+{
+  "aspect": "16:9",
+  "duration": 7,
+  "title": [{"text": "Nhật Bản có bao nhiêu hòn đảo?", "t0": 0.2}],
+  "camera": [
+    {"t": 0, "view": "dong-a"},
+    {"t": 0.5, "view": "dong-a"},
+    {"t": 3.0, "fit": "JPN"},
+    {"t": 7, "fit": "JPN", "pad": 0.04, "ease": "linear"}
+  ],
+  "highlight": [{"country": "Nhật Bản", "style": "spotlight", "t0": 2.4}],
+  "pins": [{"place": "Tokyo", "t0": 3.4}],
+  "numbers": [{"value": 14125, "label": "hòn đảo (đếm lại năm 2023)", "t0": 4.2, "at": [0.25, 0.45]}]
+}

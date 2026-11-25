@@ -1,0 +1,14 @@
+{
+  "aspect": "9:16",
+  "duration": 8,
+  "title": [{"text": "Việt Nam nằm ở đâu?", "t0": 0.2, "t1": 4.4}],
+  "camera": [
+    {"t": 0, "view": "chau-a"},
+    {"t": 0.6, "view": "chau-a"},
+    {"t": 3.2, "fit": "VNM"},
+    {"t": 8, "fit": "VNM", "pad": 0.05, "ease": "linear"}
+  ],
+  "highlight": [{"country": "VNM", "t0": 2.6}],
+  "pins": [{"place": "Hà Nội", "t0": 3.6}],
+  "numbers": [{"value": 100, "suffix": " triệu", "label": "người dân (2023)", "t0": 4.6}]
+}

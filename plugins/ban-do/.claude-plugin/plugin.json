@@ -1,0 +1,8 @@
+{
+  "name": "ban-do",
+  "version": "0.1.0",
+  "description": "Animated map clips (MP4): zoom from a region to a country or city, highlight a country, a pin with a name, a big number; 9:16 or 16:9. Natural Earth data, drawn on your computer. Maps of Vietnam always show Hoàng Sa, Trường Sa and Biển Đông.",
+  "author": { "name": "TheGentleMinh", "url": "https://thegentleminh.com" },
+  "homepage": "https://thegentleminh.com/ky-nang/ban-do/",
+  "license": "MIT (fonts: OFL-1.1; map data: Natural Earth, public domain)"
+}

@@ -26,6 +26,13 @@
       "description": "Turn photos into a video: beat-synced photo edits, gentle photo albums or a 2.5D 3D zoom, faces kept in frame, Vietnamese titles, any shape.",
       "version": "0.1.0",
       "category": "video"
+    },
+    {
+      "name": "ban-do",
+      "source": "./plugins/ban-do",
+      "description": "Animated map clips: zoom from a region to a country or city, highlight a country, a pin with a name, a big number that counts up; 9:16 or 16:9 MP4. Maps of Vietnam always show Hoàng Sa, Trường Sa and Biển Đông.",
+      "version": "0.1.0",
+      "category": "video"
     }
   ]
 }
