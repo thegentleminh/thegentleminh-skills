@@ -379,6 +379,17 @@ class Scene:
             arr = np.asarray(img, np.float32)
             # glow outside the border only, so the fill keeps its true colour
             g = (np.asarray(m, np.float32)[..., None] / 255.0) * (1 - 0.9 * sharp) * (0.5 * gl)
+            if "VNM" in hl and self._isl_pts:
+                # soft halo around each island of Hoàng Sa and Trường Sa, in Vietnam's colour
+                vn_col = np.array(hl["VNM"][0]["color"], np.float32)
+                hm = Image.new("L", (W, H), 0)
+                hd = ImageDraw.Draw(hm)
+                hr = 9 * max(0.35, self.u)
+                for x, y in self._isl_pts:
+                    hd.ellipse([x - hr, y - hr, x + hr, y + hr], fill=255)
+                hm = hm.filter(ImageFilter.GaussianBlur(radius=7 * max(0.35, self.u)))
+                gi = (np.asarray(hm, np.float32)[..., None] / 255.0) * (0.75 * hl["VNM"][1])
+                arr = arr * (1 - gi) + vn_col * gi
             arr = arr * (1 - g) + col * g
             img = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
         if self._vig is not None:
@@ -425,11 +436,14 @@ class Scene:
         """Island dots of Hoàng Sa and Trường Sa, always visible; tinted with Vietnam."""
         out = {}
         vn = hl.get("VNM")
+        a = vn[1] if vn else 0.0
+        self._isl_pts = []      # screen points for the island halo (drawn with the glow)
         for key, pts in self.w.islands.items():
             fill = self.th["island"]
-            if vn and vn[0]["style"] in ("tint", "spotlight"):
-                fill = mix(self.th["island"], vn[0]["color"], vn[1])
-            r = max(1.2, 3.4 * self.u) * SS
+            if vn:
+                # same colour as Vietnam's fill, and bigger, so they read as part of the highlight on a phone
+                fill = mix(self.th["island"], vn[0]["color"], a)
+            r = (3.4 + 2.2 * a) * max(0.35, self.u) * SS
             xs, ys = [], []
             for lon, lat in pts:
                 x, y = self.to_px(cam, lon, lat)
@@ -438,6 +452,7 @@ class Scene:
                 X, Y = x * SS, y * SS
                 if -20 < X < self.W * SS + 20 and -20 < Y < self.H * SS + 20:
                     d.ellipse([X - r, Y - r, X + r, Y + r], fill=fill)
+                    self._isl_pts.append((x, y))
             seen = any(-2 < x < self.W + 2 and -2 < y < self.H + 2 for x, y in zip(xs, ys))
             out[key] = (sum(xs) / len(xs), sum(ys) / len(ys), min(xs), min(ys), max(xs), max(ys), seen)
         return out
