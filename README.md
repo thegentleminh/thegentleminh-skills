@@ -8,6 +8,7 @@ Free Claude Code skills for YouTube creators, from [TheGentleMinh](https://thege
 | [tach-nguoi](plugins/tach-nguoi/skills/tach-nguoi/SKILL.md) | Person cut-out effects on your own clip: big text behind the person (placed automatically so it stays readable), a freeze-frame character intro with a name card, freeze snap and comic freeze, clones from one take or two. Needs PyTorch; an NVIDIA GPU makes it fast. |
 | [anh-thanh-video](plugins/anh-thanh-video/skills/anh-thanh-video/SKILL.md) | Turn photos into a video: photos changing on the beat of your own song, a gentle photo album, or a 2.5D "3D zoom". Faces kept in frame, Vietnamese titles and captions, 9:16 / 16:9 / 1:1 / 4:5. |
 | [ban-do](plugins/ban-do/skills/ban-do/SKILL.md) | Animated map clips: zoom from a region to a country or city, highlight a country (tint, outline or spotlight), a pin with a name, a big number that counts up, a title; 9:16, 16:9, 1:1 or 4:5 MP4 with no sound. Flat map from Natural Earth (public domain), drawn on your computer with Python + ffmpeg. Maps of Vietnam always show Hoàng Sa, Trường Sa and Biển Đông. |
+| [storykit-free](plugins/storykit-free/skills/studio-setup/SKILL.md) | Install Roblox Studio and connect it to Claude Code through Roblox's own Studio MCP server, step by step in Vietnamese, then check the connection ("kiểm tra kết nối"). Install and connect only; it does not make videos. Tested on Windows 10/11; macOS not tested yet. Unofficial; not affiliated with Roblox Corporation. |
 
 ## Install (inside Claude Code)
 
@@ -34,6 +35,8 @@ Skills and plugins act on your computer with your permissions. Read [SKILL.md](p
 **tach-nguoi** and **anh-thanh-video** run everything on your computer. The only downloads are their models, once, on first use: the RVM cut-out model through PyTorch (tach-nguoi; its loader `rvm_matte.py` is GPL-3.0, the rest MIT), and a face model plus an optional depth model (anh-thanh-video). They have no hooks or background processes, ask before installing anything, and never change your clips, photos or music.
 
 **ban-do** runs everything on your computer (Python, Pillow, ffmpeg). The only download is the map data from Natural Earth (about 18 MB), once, on first use. It has no hooks or background processes, asks before installing anything, and never overwrites your files.
+
+**storykit-free** has no scripts of its own. It checks whether Roblox Studio is installed, gives you the `claude mcp add` command for Roblox's Studio MCP server (you run it, or Claude runs it after you agree), and calls the Studio MCP's `list_roblox_studios` to check the connection. It downloads nothing (Studio comes from Roblox's own page), has no hooks or background processes, and never opens or edits your published games.
 
 ## Licence
 
