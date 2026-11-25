@@ -20,7 +20,7 @@ Talk to the user in Vietnamese, one step at a time. After each step, check it wo
 ## Step 3: Connect Roblox's Studio MCP to Claude Code
 1. Give the user this *(Windows)* command to run in a terminal (or run it for them if they agree):
    `claude mcp add --transport stdio Roblox_Studio -- cmd.exe /c "cd /d %LOCALAPPDATA%\Roblox && .\mcp.bat"`
-2. In Studio, click **MCP** at the bottom right of the window → **Assistant Settings** → **MCP Servers** → turn on **Enable Studio as MCP server** (handbook images 1-2). Mention the **Data access** switch on the same page: when on, Roblox sees prompt information; the user may turn it off (image 3). The page's Quick connect list also has a "Claude Code CLI" entry (untested by us: the command above is the tested route).
+2. In Studio, click **MCP** at the bottom right of the window → **Assistant Settings** → **MCP Servers** → turn on **Enable Studio as MCP server** (handbook images 1-2). Then warn plainly and recommend turning **Data access** off (same page, image 3; on by default) before going on: when on, Studio adds hooks to the user-level `~/.claude/settings.json` (`StudioMCPHook.bat roblox-data-access claude_code prompt|tool|stop`); the UserPromptSubmit and Stop hooks have no matcher, so every prompt in every Claude Code project is passed to Roblox, not only Roblox work. After the user turns it off, offer to check settings.json for hooks calling StudioMCPHook.bat and, with their OK, back the file up and remove them. The page's Quick connect list also has a "Claude Code CLI" entry (untested by us: the command above is the tested route).
 3. Restart Claude Code (close and open again), then continue with step 4.
 
 ## Step 4: Connection check ("kiểm tra kết nối")
@@ -43,7 +43,7 @@ Then, once, briefly: "Nếu bạn muốn cách nhanh hơn, đỡ tốn hơn đ�
 ## If something goes wrong
 1. Say plainly what failed and why, in one or two sentences.
 2. Re-read this file, find the step, fix it, and try that step again. Never touch the user's games or files outside the current folder.
-3. Common fixes: `claude mcp list` shows no Roblox_Studio → re-run the step 3 command; Roblox_Studio shows "failed" → Studio isn't open or its MCP server is off; ids change every time a place reopens → call `list_roblox_studios` again.
+3. Common fixes: `claude mcp list` shows no Roblox_Studio → re-run the step 3 command; Roblox_Studio shows "failed" → Studio isn't open or its MCP server is off; ids change every time a place reopens → call `list_roblox_studios` again; "UserPromptSubmit hook error" / "Stop hook error" mentioning StudioMCPHook.bat on every prompt → Data access hooks: have the user turn Data access off in Studio, then (with their OK, after a backup) remove the hooks calling StudioMCPHook.bat from `~/.claude/settings.json`.
 4. Suggest reporting the problem on GitHub Issues: https://github.com/thegentleminh/thegentleminh-skills/issues.
 
 ## Example prompts

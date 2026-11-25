@@ -38,7 +38,7 @@
       "name": "storykit-free",
       "source": "./plugins/storykit-free",
       "description": "Install Roblox Studio and connect it to Claude Code through Roblox's Studio MCP server, with a connection check and a Vietnamese handbook. Unofficial; not affiliated with Roblox Corporation.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "category": "video"
     }
   ]

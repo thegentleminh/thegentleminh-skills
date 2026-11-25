@@ -34,7 +34,8 @@ Claude sẽ đưa lệnh `claude mcp add ... Roblox_Studio ...`. Rồi trong Stu
 
 ![Bật Enable Studio as MCP server](images/02_enable_mcp_server.png)
 
-Cùng trang đó có mục **Data access**: khi bật, Roblox được xem thông tin prompt của bạn để cải thiện Studio. Tắt đi nếu bạn không muốn chia sẻ (hình 3).
+**Nên tắt Data access trước khi dùng** (cùng trang đó, hình 3; mục này mặc định đang bật). Khi bật, Studio tự thêm hook vào cài đặt Claude Code của bạn (file `%USERPROFILE%\.claude\settings.json`). Các hook này chuyển **mọi câu lệnh bạn gõ trong Claude Code, ở mọi dự án, không chỉ việc Roblox**, cho Roblox. Tắt xong, dán vào Claude Code:
+> Kiểm tra file cài đặt Claude Code của mình có hook nào gọi StudioMCPHook.bat không. Nếu có, sao lưu file rồi xóa các hook đó; hỏi mình trước khi xóa.
 
 ![Mục Data access](images/03_data_access.png)
 
@@ -52,6 +53,7 @@ Lỗi hay gặp:
 - **Claude không thấy Roblox Studio:** chạy lại lệnh ở bước 3, rồi khởi động lại Claude Code.
 - **Thấy nhưng không có place nào:** mở một place trong Studio và bật MCP server.
 - **Đổi place thì mất kết nối:** bình thường; gõ lại "kiểm tra kết nối".
+- **Mỗi lần gõ đều báo "UserPromptSubmit hook error" hoặc "Stop hook error" kèm StudioMCPHook.bat:** đó là hook của Data access. Tắt Data access trong Studio (hình 3), rồi nhờ Claude xóa các hook gọi StudioMCPHook.bat trong `%USERPROFILE%\.claude\settings.json` (sao lưu file trước).
 
 Báo lỗi cho bọn mình ở **GitHub Issues**: https://github.com/thegentleminh/thegentleminh-skills/issues.
 

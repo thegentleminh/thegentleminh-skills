@@ -1,6 +1,6 @@
 {
   "name": "storykit-free",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "StoryKit Free: install Roblox Studio and connect it to Claude Code (Studio MCP), with a connection check and a Vietnamese handbook. Unofficial tool for Studio creators; not affiliated with Roblox Corporation.",
   "author": {
     "name": "TheGentleMinh",
