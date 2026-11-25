@@ -1,20 +1,16 @@
 {
   "name": "thegentleminh",
   "description": "Free Claude Code skills from TheGentleMinh for YouTube creators",
-  "owner": { "name": "TheGentleMinh", "url": "https://thegentleminh.com" },
+  "owner": {
+    "name": "TheGentleMinh",
+    "url": "https://thegentleminh.com"
+  },
   "plugins": [
     {
       "name": "dung-video",
       "source": "./plugins/dung-video",
       "description": "Set up video editing with Claude Code and do basic edits with ffmpeg: trim, join, vertical Shorts, Vietnamese subtitles, loudness, YouTube export, thumbnail frames.",
       "version": "1.0.2",
-      "category": "video"
-    },
-    {
-      "name": "video-giai-thich",
-      "source": "./plugins/video-giai-thich",
-      "description": "Vietnamese animated explainer videos (9:16) from a topic: spoken-Vietnamese script, voice (ElevenLabs, your own or none), words timed to the voice, five looks. Renders with HyperFrames.",
-      "version": "0.1.1",
       "category": "video"
     },
     {
