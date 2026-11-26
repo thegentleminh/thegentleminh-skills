@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "storykit-pass": {
+      "type": "http",
+      "url": "https://thegentleminh.com/mcp/",
+      "headers": { "Authorization": "Bearer ${user_config.pass_code}" }
+    }
+  }
+}

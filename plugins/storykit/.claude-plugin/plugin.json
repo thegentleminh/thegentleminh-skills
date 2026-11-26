@@ -1,0 +1,16 @@
+{
+  "name": "storykit",
+  "version": "0.1.0",
+  "description": "StoryKit: make Vietnamese story Shorts filmed in Roblox Studio, from a topic to a finished 9:16 video. Unofficial tool for Studio creators; not affiliated with Roblox Corporation.",
+  "author": { "name": "TheGentleMinh", "url": "https://thegentleminh.com" },
+  "homepage": "https://thegentleminh.com/ky-nang/storykit/",
+  "userConfig": {
+    "pass_code": {
+      "type": "string",
+      "title": "Mã Pass StoryKit",
+      "description": "Mã Pass cá nhân của bạn (trang tài khoản trên website). Lưu trong kho bảo mật của máy, không nằm trong file của skill.",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}

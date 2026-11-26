@@ -9,6 +9,7 @@ Free Claude Code skills for YouTube creators, from [TheGentleMinh](https://thege
 | [anh-thanh-video](plugins/anh-thanh-video/skills/anh-thanh-video/SKILL.md) | Turn photos into a video: photos changing on the beat of your own song, a gentle photo album, or a 2.5D "3D zoom". Faces kept in frame, Vietnamese titles and captions, 9:16 / 16:9 / 1:1 / 4:5. |
 | [ban-do](plugins/ban-do/skills/ban-do/SKILL.md) | Animated map clips: zoom from a region to a country or city, highlight a country (tint, outline or spotlight), a pin with a name, a big number that counts up, a title; 9:16, 16:9, 1:1 or 4:5 MP4 with no sound. Flat map from Natural Earth (public domain), drawn on your computer with Python + ffmpeg. Maps of Vietnam always show Hoàng Sa, Trường Sa and Biển Đông. |
 | [storykit-free](plugins/storykit-free/skills/studio-setup/SKILL.md) | Install Roblox Studio and connect it to Claude Code through Roblox's own Studio MCP server, step by step in Vietnamese, then check the connection ("kiểm tra kết nối"). Install and connect only; it does not make videos. Tested on Windows 10/11; macOS not tested yet. Unofficial; not affiliated with Roblox Corporation. |
+| [storykit](plugins/storykit/skills/studio-story-shorts/SKILL.md) | **Needs a StoryKit Pass.** Vietnamese "Ở thế giới này…" story Shorts filmed in Roblox Studio: premise, script, shot plan, sets and cast, acting, recording, captions, music and the final 9:16 edit. This plugin is the starter (connection check, setup, download of the method from the Pass server). Tested on Windows 10/11; macOS not tested yet. Unofficial; not affiliated with Roblox Corporation. |
 
 ## Install (inside Claude Code)
 
@@ -37,6 +38,8 @@ Skills and plugins act on your computer with your permissions. Read [SKILL.md](p
 **ban-do** runs everything on your computer (Python, Pillow, ffmpeg). The only download is the map data from Natural Earth (about 18 MB), once, on first use. It has no hooks or background processes, asks before installing anything, and never overwrites your files.
 
 **storykit-free** has no scripts of its own. It checks whether Roblox Studio is installed, gives you the `claude mcp add` command for Roblox's Studio MCP server (you run it, or Claude runs it after you agree), and calls the Studio MCP's `list_roblox_studios` to check the connection. It downloads nothing (Studio comes from Roblox's own page), has no hooks or background processes, and never opens or edits your published games.
+
+**storykit** connects to the StoryKit Pass server at `https://thegentleminh.com/mcp/` and sends your Pass code with each call (Claude Code keeps the code in your system's credential store, not in the plugin's files). With a valid Pass, its one script, [`storykit_sync.py`](plugins/storykit/skills/studio-story-shorts/scripts/storykit_sync.py), downloads the method package from a short-lived link on thegentleminh.com or its storage, checks its size and SHA-256, and unpacks it into a `.storykit` folder inside your video's folder. It accepts no other download hosts, has no hooks or background processes, asks before installing anything, and never opens or edits your published games.
 
 ## Licence
 
