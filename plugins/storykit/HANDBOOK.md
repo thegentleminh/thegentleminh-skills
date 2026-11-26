@@ -61,12 +61,13 @@ Công cụ không chính thức dành cho người làm nội dung trên Roblox 
 
 Gõ `kiểm tra kết nối` bất cứ lúc nào. Claude trả lời một dòng cho Roblox Studio và một dòng cho Blocky StoryKit Pass, ví dụ:
 
-> Đã kết nối Roblox Studio (Baseplate) · Đã kết nối Blocky StoryKit Pass · Pass còn hạn đến 31/12/2026.
+> Đã kết nối Roblox Studio (Baseplate) · Đã kết nối Blocky StoryKit Pass · Pass còn hạn đến 31/12/2026 · Máy này đang giữ chỗ (1/1).
 
 Nếu có dòng báo lỗi, làm theo hướng dẫn ngay trong câu trả lời:
 - **Chưa kết nối Roblox Studio**: mở Studio, mở một place, bật MCP, gõ lại.
 - **Chưa kết nối Blocky StoryKit Pass**: gõ `/plugin`, chọn storykit, nhập lại mã Pass, rồi gõ `/mcp` để kết nối lại.
 - **Pass hết hạn**: gia hạn ở trang tài khoản.
+- **Mã Pass đang dùng trên máy khác**: mỗi mã Pass dùng trên 1 máy. Đổi máy thì vào trang Pass của tôi (https://thegentleminh.com/pass/cua-toi/), gỡ máy cũ (mỗi tuần một lần), rồi gõ lại `kiểm tra kết nối`.
 - **Máy chủ không phản hồi**: không phải lỗi của bạn; thử lại sau ít phút. Trong lúc đó Claude vẫn làm được phần cơ bản.
 
 ## 4. Video đầu tiên
@@ -107,9 +108,11 @@ Plugin Blocky StoryKit bạn cài chỉ là phần khởi động: kiểm tra k�
 - Nếu máy chủ tạm không phản hồi, Claude dùng bản đã lưu, miễn là Pass còn hạn.
 - **Hết Pass:** Blocky StoryKit dừng làm video mới. Video và mọi file bạn đã làm vẫn là của bạn.
 - Đừng sửa hay chia sẻ các file trong `.storykit`: chúng chỉ dùng trong máy bạn và sẽ được thay khi tải bản mới.
+- Để biết mã Pass đang dùng trên máy nào, plugin gửi kèm một mã máy đã được băm (hash) từ mã máy của hệ điều hành. Nó không phải tên máy, tên người dùng hay số phần cứng, và không dùng để biết bạn là ai.
 
 ## 6. Giới hạn
 
+- Mỗi mã Pass dùng trên 1 máy; đổi máy thì gỡ máy cũ trong Pass của tôi, mỗi tuần một lần.
 - Studio phải ở cửa sổ trên cùng và màn hình phải sáng khi quay; nếu không, video bị giật hoặc đen.
 - Mỗi take quay tối đa khoảng 25-30 giây; một video 2 phút cần 5-8 take, Blocky StoryKit tự ghép.
 - Nhân vật là R15 khối với đầu động (dynamic head): miệng mở theo lời, mặt đổi cảm xúc, nhưng không khớp môi từng âm và ngón tay không cử động.
@@ -138,6 +141,8 @@ Lỗi hay gặp: video giật (Studio không ở trên cùng), take đen (màn h
 **Có cần card RTX không?** Không. Card NVIDIA chỉ giúp bước canh chữ theo giọng chạy nhanh hơn; không có thì chạy bằng CPU, chậm hơn một chút. Roblox Studio chạy tốt trên máy chơi game phổ thông.
 
 **Hết Pass thì video đã làm có còn không?** Còn. Video và mọi file bạn đã làm là của bạn. Hết Pass thì Blocky StoryKit dừng làm video mới; gia hạn là dùng tiếp.
+
+**Dùng một Pass trên hai máy được không?** Không. Mỗi mã Pass dùng trên 1 máy. Đổi máy (máy mới, hay cài lại Windows) thì vào trang Pass của tôi gỡ máy cũ, mỗi tuần một lần. Máy nào 30 ngày không dùng Blocky StoryKit thì tự nhường chỗ.
 
 **Có dùng được cho kênh tiếng Anh không?** Bản này viết cho tiếng Việt (giọng, phụ đề, cách nói). Tiếng Anh: chưa hỗ trợ.
 

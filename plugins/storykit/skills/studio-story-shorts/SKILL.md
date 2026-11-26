@@ -16,16 +16,21 @@ Talk to the user in Vietnamese. `<project>` is the folder of the current video (
 - **Roblox Studio's MCP** (Roblox's own, local): `list_roblox_studios`, `execute_luau`, `video_capture`… builds and films inside the user's Studio.
 - **Blocky StoryKit Pass** (`mcp__plugin_storykit_storykit-pass__*`, declared in this plugin's `.mcp.json`): Claude Code asks for the Pass code when the plugin is enabled and keeps it in the system's secure credential store, never in these files.
 
+**One computer per Pass code.** The server counts computers by an install id: `sha256("blocky-storykit|" + the OS machine id)` (Windows MachineGuid, macOS IOPlatformUUID, Linux /etc/machine-id, else a random id saved once in `~/.storykit/install-id`). Only that hash is sent, never a hardware id, user name or path. Claude Code sends it in the `X-StoryKit-Install` header (`.mcp.json` `headersHelper`). As a backup, run `SYNC install-id` once per session (section 3) and pass its output as `install_id` on every Pass tool call, `pass_status` included. If it fails, call without it.
+
 ## 1. Connection check (start of every run, and whenever the user types "kiểm tra kết nối")
 
 Call `list_roblox_studios`, then `pass_status`, then check the machine: `python --version` (3.10+), `ffmpeg -version`, and `python -c "import numpy, cv2, faster_whisper"`. Report in Vietnamese, one line per connection.
 
-The Pass server never answers a wrong, missing or expired code with an auth error: `pass_status` always returns `{valid, valid_until, plan, content_version, message_vi}`. Show `message_vi` as the server wrote it.
+The Pass server never answers a wrong, missing or expired code with an auth error: `pass_status` always returns `{valid, valid_until, plan, content_version, message_vi}`, plus `computers_used` / `computers_max` once it knows this computer. Show `message_vi` as the server wrote it. When `valid` is false, pick the case by `reason` if the server sends one (`code`, `expired`, `computers`, `outdated`), otherwise by the start of `message_vi`. `valid_until` alone doesn't mean expired.
 
-- **Both OK** (`valid: true`): "Đã kết nối Roblox Studio (<tên place>) · Đã kết nối Blocky StoryKit Pass · Pass còn hạn đến <valid_until, D/M/YYYY>."
+- **Both OK** (`valid: true`): "Đã kết nối Roblox Studio (<tên place>) · Đã kết nối Blocky StoryKit Pass · Pass còn hạn đến <valid_until, D/M/YYYY>." With `computers_used`/`computers_max`, add " · Máy này đang giữ chỗ (<computers_used>/<computers_max>)."
 - **Studio not connected** (tool missing or error): "Chưa kết nối được Roblox Studio. Hãy mở Roblox Studio, mở một place, bật MCP server trong Studio rồi gõ lại 'kiểm tra kết nối'." Then help with setup step B below.
-- **Missing or wrong code** (`valid: false`, no `valid_until`; the message starts "Chưa có mã Pass" or "Mã Pass không đúng"): "<message_vi>"
-- **Pass expired** (`valid: false` with a `valid_until`; "Pass hết hạn ngày…"): "<message_vi>" then: "Các video và file bạn đã làm vẫn là của bạn." Do not run the method (section 3).
+- **Missing or wrong code** (message starts "Chưa có mã Pass" or "Mã Pass không đúng"): "<message_vi>"
+- **Pass expired** (message starts "Pass hết hạn"): "<message_vi>" then: "Các video và file bạn đã làm vẫn là của bạn." Do not run the method (section 3).
+- **Used on another computer** (`reason: "computers"`, or `computers_max` present with `valid: false`, or the message says the code is in use on another computer; content tools return the same text as an error): "<message_vi>". If it doesn't already give the link, add: "Đổi máy thì mở trang Pass của tôi (https://thegentleminh.com/pass/cua-toi/), gỡ máy cũ (mỗi tuần một lần), rồi gõ lại 'kiểm tra kết nối'." Then stop: no retries, no sync, no cached method. The user's files stay theirs. Never try to get around the limit (another id, deleting `~/.storykit/install-id`, editing the helper).
+- **Plugin outdated** (message says the plugin is old, "đã cũ"): "<message_vi>". The server got no install id: run `SYNC install-id`; if that fails, Python is the problem (Machine line below), not the plugin version.
+- **Any other `valid: false`**: "<message_vi>" as is; don't run the method.
 - **Pass tools missing** (no `storykit-pass` tools, or `/mcp` shows it failed / "Needs authentication"): "Chưa kết nối Blocky StoryKit Pass. Gõ /plugin, kiểm tra plugin storykit đang bật và đã nhập mã Pass, rồi gõ /mcp để kết nối lại."
 - **Server not answering** (timeout, 5xx, "Failed to connect"): "Máy chủ Blocky StoryKit Pass đang không phản hồi (không phải lỗi của bạn)." Then section 3's offline rule.
 - **Machine:** anything missing → one more line, "Máy còn thiếu: <items>", with the fix (Windows: `winget install -e --id Python.Python.3.12`, `winget install -e --id Gyan.FFmpeg`, then `python -m pip install numpy opencv-python faster-whisper`). Ask before installing anything.
@@ -40,19 +45,20 @@ The Pass server never answers a wrong, missing or expired code with an auth erro
 
 `SYNC` = `python "<this skill's folder>/scripts/storykit_sync.py"` (the folder Claude Code shows as this skill's base directory).
 
+0. `SYNC install-id` once per session → the `install_id` for Pass tool calls (see "One computer per Pass code").
 1. `SYNC status --project <project>` → the cached `content_version`, `valid_until`, `intact`.
 2. **Pass valid:**
    - Cache missing, `intact` false, or its `content_version` differs from `pass_status.content_version` → call `get_bundle` and run `SYNC fetch --project <project> --url "<url>" --sha256 <sha256> --bytes <bytes> --version <content_version> --valid-until <valid_until>`. Say one line: "Đã tải phương pháp Blocky StoryKit bản <content_version>." The url expires in 15 minutes: fetch right away; if it expired, call `get_bundle` again.
    - Cache current → `SYNC touch --project <project> --valid-until <valid_until>` and go on.
-3. **Pass expired or code wrong:** don't sync and don't follow the cached method; for an expired Pass run `SYNC touch --project <project> --valid-until <valid_until>` so the offline rule below knows it ended. Say the server's message. The user keeps every video and file they made; nothing is deleted.
-4. **Server not answering:** if the cache is `intact` and its `valid_until` is today or later, go on with the cached method and say "Đang dùng bản phương pháp đã lưu (<content_version>) vì máy chủ chưa phản hồi." Otherwise stop and ask the user to try again later.
+3. **Pass expired, code wrong, used on another computer, or any other `valid: false`:** don't sync and don't follow the cached method; for an expired Pass run `SYNC touch --project <project> --valid-until <valid_until>` so the offline rule below knows it ended. Say the server's message. The user keeps every video and file they made; nothing is deleted.
+4. **Server not answering** (no answer at all; a "used on another computer" answer is not this case): if the cache is `intact` and its `valid_until` is today or later, go on with the cached method and say "Đang dùng bản phương pháp đã lưu (<content_version>) vì máy chủ chưa phản hồi." Otherwise stop and ask the user to try again later.
 5. Never edit files in `.storykit/method/` to change behaviour (a sync replaces them). Never copy them outside the project or share them.
 
 Then **read `<project>/.storykit/method/METHOD.md` and follow it** from its setup section. Every path in the method files is relative to `.storykit/method/`.
 
 ## Requirements and limits
 
-- **A Blocky StoryKit Pass** (the method, the banks and the asset catalogue come from the Pass server; the starter plugin alone can't make a video).
+- **A Blocky StoryKit Pass** (the method, the banks and the asset catalogue come from the Pass server; the starter plugin alone can't make a video). **One computer per Pass code**; to switch computers, remove the old one on Pass của tôi (once a week). A computer unused for 30 days frees its place. Reinstalling the OS counts as a new computer. The plugin sends only a hashed install id.
 - **Roblox Studio** (current build) with its **MCP server** added to Claude Code (command above). Studio ids change every time a place reopens.
 - **Tested on Windows 10/11; macOS not tested yet.** Windows-only steps: the Studio MCP command (`cmd.exe`, `%LOCALAPPDATA%`), the Studio install path, `winget`, and the method's Studio installer (calls Studio's `mcp.bat`).
 - **Claude Code** (runs on your own Claude account).
@@ -77,6 +83,8 @@ Then **read `<project>/.storykit/method/METHOD.md` and follow it** from its setu
 | No `storykit-pass` tools, or `/mcp` shows it failed | Plugin off, or no Pass code entered | `/plugin` → storykit enabled → `/plugin configure storykit@thegentleminh` → paste the code → `/mcp` reconnect |
 | "Chưa có mã Pass" / "Mã Pass không đúng" | Code missing or mistyped | `/plugin configure storykit@thegentleminh`, paste the code from the email again |
 | "Pass hết hạn ngày …" | Pass expired | Renew at the link in the message; videos already made stay yours |
+| The code is in use on another computer | One computer per Pass code | Pass của tôi (https://thegentleminh.com/pass/cua-toi/) → remove the old computer (once a week) → `kiểm tra kết nối`. Don't retry in a loop |
+| "Plugin … đã cũ" | The server got no install id | `/plugin` → update storykit; if `SYNC install-id` fails, fix Python first |
 | `storykit_sync.py`: "checksum mismatch" or "download incomplete" | Download cut off | Run the sync again (call `get_bundle` for a fresh link) |
 | `storykit_sync.py`: "refused: the bundle URL must be https…" | The link isn't from the Blocky StoryKit server | Don't download; report it |
 | "UserPromptSubmit hook error" / "Stop hook error" with StudioMCPHook.bat on every prompt | Studio's Data access added hooks to `~/.claude/settings.json` that pass every prompt (all projects) to Roblox | User turns Data access off in Studio; with their OK, back up settings.json and remove the hooks calling StudioMCPHook.bat |

@@ -9,13 +9,66 @@ Holds no method content: it only downloads, verifies and unzips. Standard librar
         replaced only after the new one unpacked cleanly) and writes <dir>/.storykit/state.json
     python storykit_sync.py touch --project <dir> --valid-until <YYYY-MM-DD|"">
         records the newest valid_until from pass_status (so the cache knows when the Pass ends)
+    python storykit_sync.py install-id
+        prints this computer's install id (64 hex chars) for the per-computer Pass limit
+    python storykit_sync.py install-header
+        prints {"X-StoryKit-Install": "<id>"} for .mcp.json's headersHelper; never fails (prints {} if it can't)
+
+The install id is sha256("blocky-storykit|" + the OS machine id): Windows MachineGuid, macOS IOPlatformUUID,
+Linux /etc/machine-id, else a random id saved once in ~/.storykit/install-id. Only the hash leaves the computer.
 
 Only https://thegentleminh.com and https://*.supabase.co URLs are accepted (add --dev for http://localhost test servers).
 """
-import argparse, datetime, hashlib, io, json, shutil, sys, urllib.parse, urllib.request, zipfile
+import argparse, datetime, hashlib, io, json, re, shutil, subprocess, sys, urllib.parse, urllib.request, uuid, zipfile
 from pathlib import Path
 
 MAX_BYTES = 20 * 1024 * 1024
+INSTALL_SALT = "blocky-storykit|"
+
+
+def machine_uuid():
+    """The OS's own stable machine id (read only), or None."""
+    try:
+        if sys.platform == "win32":
+            import winreg
+            with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Cryptography", 0,
+                                winreg.KEY_READ | winreg.KEY_WOW64_64KEY) as k:
+                return str(winreg.QueryValueEx(k, "MachineGuid")[0]).strip() or None
+        if sys.platform == "darwin":
+            out = subprocess.run(["ioreg", "-rd1", "-c", "IOPlatformExpertDevice"], capture_output=True, text=True, timeout=5).stdout
+            m = re.search(r'"IOPlatformUUID"\s*=\s*"([^"]+)"', out)
+            return m.group(1) if m else None
+        p = Path("/etc/machine-id")
+        return p.read_text().strip() or None if p.exists() else None
+    except Exception:
+        return None
+
+
+def saved_random_id():
+    p = Path.home() / ".storykit" / "install-id"
+    if p.exists():
+        v = p.read_text(encoding="utf-8").strip()
+        if v:
+            return v
+    v = str(uuid.uuid4())
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(v, encoding="utf-8")
+    return v
+
+
+def install_id():
+    return hashlib.sha256((INSTALL_SALT + (machine_uuid() or saved_random_id())).encode("utf-8")).hexdigest()
+
+
+def cmd_install_id(a):
+    print(install_id())
+
+
+def cmd_install_header(a):
+    try:
+        print(json.dumps({"X-StoryKit-Install": install_id()}))
+    except Exception:
+        print("{}")
 
 
 def state_path(project):
@@ -113,8 +166,10 @@ def main():
     f = sp.add_parser("fetch"); f.add_argument("--project", default="."); f.add_argument("--url", required=True)
     f.add_argument("--sha256", required=True); f.add_argument("--bytes", type=int, default=0); f.add_argument("--version", required=True)
     f.add_argument("--valid-until", default=""); f.add_argument("--dev", action="store_true", help="allow http://localhost test servers")
+    sp.add_parser("install-id"); sp.add_parser("install-header")
     a = ap.parse_args()
-    {"status": cmd_status, "touch": cmd_touch, "fetch": cmd_fetch}[a.cmd](a)
+    {"status": cmd_status, "touch": cmd_touch, "fetch": cmd_fetch,
+     "install-id": cmd_install_id, "install-header": cmd_install_header}[a.cmd](a)
 
 
 if __name__ == "__main__":

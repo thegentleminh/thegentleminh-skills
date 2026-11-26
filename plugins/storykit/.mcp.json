@@ -3,7 +3,8 @@
     "storykit-pass": {
       "type": "http",
       "url": "https://thegentleminh.com/mcp/",
-      "headers": { "Authorization": "Bearer ${user_config.pass_code}" }
+      "headers": { "Authorization": "Bearer ${user_config.pass_code}" },
+      "headersHelper": "python \"${CLAUDE_PLUGIN_ROOT}/skills/studio-story-shorts/scripts/storykit_sync.py\" install-header || python3 \"${CLAUDE_PLUGIN_ROOT}/skills/studio-story-shorts/scripts/storykit_sync.py\" install-header"
     }
   }
 }
