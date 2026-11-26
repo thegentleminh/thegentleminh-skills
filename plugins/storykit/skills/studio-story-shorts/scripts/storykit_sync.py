@@ -1,4 +1,4 @@
-"""StoryKit sync: download the method bundle the Pass server hands out, check it, unpack it into the project.
+"""Blocky StoryKit sync: download the method bundle the Pass server hands out, check it, unpack it into the project.
 
 Holds no method content: it only downloads, verifies and unzips. Standard library only.
 
@@ -101,7 +101,7 @@ def cmd_fetch(a):
     st.update({"content_version": a.version, "sha256": digest, "synced_at": datetime.datetime.now().isoformat(timespec="seconds"),
                "valid_until": a.valid_until or None, "files": files})
     save_state(a.project, st)
-    print(f"synced StoryKit method {a.version}: {len(files)} files -> {cur}")
+    print(f"synced Blocky StoryKit method {a.version}: {len(files)} files -> {cur}")
 
 
 def main():

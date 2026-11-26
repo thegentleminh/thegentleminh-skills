@@ -1,7 +1,7 @@
 {
   "name": "storykit-free",
-  "version": "0.1.1",
-  "description": "StoryKit Free: install Roblox Studio and connect it to Claude Code (Studio MCP), with a connection check and a Vietnamese handbook. Unofficial tool for Studio creators; not affiliated with Roblox Corporation.",
+  "version": "0.1.2",
+  "description": "Blocky StoryKit Free: install Roblox Studio and connect it to Claude Code (Studio MCP), with a connection check and a Vietnamese handbook. Unofficial tool for Studio creators; not affiliated with Roblox Corporation.",
   "author": {
     "name": "TheGentleMinh",
     "url": "https://thegentleminh.com"

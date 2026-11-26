@@ -31,14 +31,14 @@
       "name": "storykit-free",
       "source": "./plugins/storykit-free",
       "description": "Install Roblox Studio and connect it to Claude Code through Roblox's Studio MCP server, with a connection check and a Vietnamese handbook. Unofficial; not affiliated with Roblox Corporation.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "category": "video"
     },
     {
       "name": "storykit",
       "source": "./plugins/storykit",
-      "description": "StoryKit (needs a StoryKit Pass): make Vietnamese 'Ở thế giới này…' story Shorts filmed in Roblox Studio, from a topic to a finished 9:16 video. This is the starter: connection check, setup and a download of the method from the Pass server. Unofficial; not affiliated with Roblox Corporation.",
-      "version": "0.1.0",
+      "description": "Blocky StoryKit (needs a Blocky StoryKit Pass): make Vietnamese 'Ở thế giới này…' story Shorts filmed in Roblox Studio, from a topic to a finished 9:16 video. This is the starter: connection check, setup and a download of the method from the Pass server. Unofficial; not affiliated with Roblox Corporation.",
+      "version": "0.1.1",
       "category": "video"
     }
   ]

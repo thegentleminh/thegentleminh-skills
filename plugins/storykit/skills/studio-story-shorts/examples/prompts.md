@@ -19,7 +19,7 @@ What you get: a script in story shape A with a family motto and a callback, writ
 - **Cast:** "Tạo nhân vật: bé trai kể chuyện, ba, hàng xóm giàu. Cho mình xem ảnh cả ba đứng cạnh nhau." -> rigs + a lineup still.
 - **Test one take:** "Quay thử take A (shot 1-12) và ghép lại cho mình xem." -> raw/takeA.mp4 + work/render_silent.mp4 for those shots.
 - **Edit:** "Ghép phụ đề, nhạc và hiệu ứng âm thanh, xuất bản cuối." -> out/final.mp4 + the check report.
-- **Connection:** "kiểm tra kết nối" -> one line for Roblox Studio, one for StoryKit Pass.
+- **Connection:** "kiểm tra kết nối" -> one line for Roblox Studio, one for Blocky StoryKit Pass.
 
 ## Revision notes (say what's wrong, the skill fixes only that)
 - "Shot 7 cái bồn cầu quay ngược rồi." -> turns the prop, re-records only that take.

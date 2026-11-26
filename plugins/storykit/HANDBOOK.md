@@ -1,23 +1,23 @@
-# StoryKit: Sổ tay sử dụng
+# Blocky StoryKit: Sổ tay sử dụng
 
-StoryKit giúp bạn làm video Short kể chuyện kiểu "Ở thế giới này…" (dọc 9:16, 2-2,5 phút), quay ngay trong Roblox Studio của bạn: từ ý tưởng, kịch bản, dựng cảnh, nhân vật diễn, quay, đến phụ đề, nhạc và xuất video.
+Blocky StoryKit giúp bạn làm video Short kể chuyện kiểu "Ở thế giới này…" (dọc 9:16, 2-2,5 phút), quay ngay trong Roblox Studio của bạn: từ ý tưởng, kịch bản, dựng cảnh, nhân vật diễn, quay, đến phụ đề, nhạc và xuất video.
 
-Công cụ không chính thức dành cho người làm nội dung trên Roblox Studio. **Không liên kết với Roblox Corporation.** StoryKit không bán asset nào: mọi mô hình, quần áo, bầu trời, hoạt ảnh đều là đồ miễn phí hoặc đồ trong catalogue, được tải bằng ID ngay trong Studio của bạn.
+Công cụ không chính thức dành cho người làm nội dung trên Roblox Studio. **Không liên kết với Roblox Corporation.** Blocky StoryKit không bán asset nào: mọi mô hình, quần áo, bầu trời, hoạt ảnh đều là đồ miễn phí hoặc đồ trong catalogue, được tải bằng ID ngay trong Studio của bạn.
 
 ## 1. Bạn cần gì
 
 - Máy Windows 10/11: **đã thử trên Windows 10/11; macOS chưa thử.** Các bước có ghi *(Windows)* là lệnh riêng của Windows; trên Mac sẽ khác.
 - **Roblox Studio** (miễn phí) và một tài khoản Roblox.
-- **Claude Code** (StoryKit chạy trên tài khoản Claude của bạn).
+- **Claude Code** (Blocky StoryKit chạy trên tài khoản Claude của bạn).
 - **ffmpeg** và **Python 3.10+** (hướng dẫn cài ở bước 2).
-- **Mã Pass StoryKit** (trong trang tài khoản trên website).
+- **Mã Pass Blocky StoryKit** (trong trang tài khoản trên website).
 - Giọng đọc: giọng của bạn, hoặc giọng AI miễn phí (TTSMaker, VoiceStudio; xem mục 4b).
 - Không bắt buộc: card NVIDIA (canh chữ theo giọng đọc nhanh hơn).
 
 ## 2. Cài đặt trong 5 bước
 
-1. **Tải Roblox Studio** từ trang chính thức của Roblox: **https://create.roblox.com/docs/studio/setup** → bấm **Download Studio** → trong hộp thoại bấm **Download Studio** lần nữa → mở file vừa tải (`RobloxStudio.exe` trên Windows) → khi cài xong bấm **Launch Studio** → đăng nhập bằng tài khoản Roblox (chưa có thì tạo ở roblox.com). Chỉ tải Studio từ trang của Roblox; StoryKit không gửi file cài đặt nào.
-   Rồi mở một place trống: ở trang đầu của Studio, mục **Open a Template**, chọn **Baseplate**. (Khi làm video, StoryKit tự tạo place riêng cho từng video.)
+1. **Tải Roblox Studio** từ trang chính thức của Roblox: **https://create.roblox.com/docs/studio/setup** → bấm **Download Studio** → trong hộp thoại bấm **Download Studio** lần nữa → mở file vừa tải (`RobloxStudio.exe` trên Windows) → khi cài xong bấm **Launch Studio** → đăng nhập bằng tài khoản Roblox (chưa có thì tạo ở roblox.com). Chỉ tải Studio từ trang của Roblox; Blocky StoryKit không gửi file cài đặt nào.
+   Rồi mở một place trống: ở trang đầu của Studio, mục **Open a Template**, chọn **Baseplate**. (Khi làm video, Blocky StoryKit tự tạo place riêng cho từng video.)
 
    ![Chọn mẫu Baseplate](images/04_new_baseplate.png)
 2. **Cài Python và ffmpeg** *(Windows)*: mở **Terminal** (bấm Start, gõ "Terminal") và chạy lần lượt:
@@ -33,7 +33,7 @@ Công cụ không chính thức dành cho người làm nội dung trên Roblox 
    Kiểm tra: dán vào Claude Code
    > Kiểm tra giúp mình máy đã có Python 3.10 trở lên, ffmpeg, và các gói numpy, opencv-python, faster-whisper chưa. Thiếu gì thì chỉ mình cách cài, hỏi mình trước khi cài.
 
-   Kết quả đúng: Claude báo đủ cả ba (Python, ffmpeg, các gói). Sau khi cài StoryKit (bước 4), bước kiểm tra kết nối cũng kiểm tra lại những thứ này. Phông chữ phụ đề Claude sẽ hỏi tải sau, khi làm video đầu tiên.
+   Kết quả đúng: Claude báo đủ cả ba (Python, ffmpeg, các gói). Sau khi cài Blocky StoryKit (bước 4), bước kiểm tra kết nối cũng kiểm tra lại những thứ này. Phông chữ phụ đề Claude sẽ hỏi tải sau, khi làm video đầu tiên.
 3. **Kết nối Claude Code với Roblox Studio** *(lệnh Windows)*: trong Terminal chạy
    `claude mcp add --transport stdio Roblox_Studio -- cmd.exe /c "cd /d %LOCALAPPDATA%\Roblox && .\mcp.bat"`
    rồi trong Studio bật MCP server: bấm chữ **MCP** ở góc dưới bên phải cửa sổ Studio (hình 1) → mở **Assistant Settings** → mục **MCP Servers** → bật **Enable Studio as MCP server** (hình 2).
@@ -46,7 +46,7 @@ Công cụ không chính thức dành cho người làm nội dung trên Roblox 
    > Kiểm tra file cài đặt Claude Code của mình có hook nào gọi StudioMCPHook.bat không. Nếu có, sao lưu file rồi xóa các hook đó; hỏi mình trước khi xóa.
 
    ![Mục Data access](images/03_data_access.png)
-4. **Cài StoryKit**: trong Claude Code gõ
+4. **Cài Blocky StoryKit**: trong Claude Code gõ
    ```
    /plugin marketplace add thegentleminh/thegentleminh-skills
    ```
@@ -54,18 +54,18 @@ Công cụ không chính thức dành cho người làm nội dung trên Roblox 
    ```
    /plugin install storykit@thegentleminh
    ```
-   Claude Code sẽ hỏi **mã Pass** (trong email): dán mã vào. Nếu nó chưa hỏi, gõ `/plugin configure storykit@thegentleminh` rồi dán mã. Mã được lưu trong kho bảo mật của máy, không nằm trong file nào của StoryKit.
+   Claude Code sẽ hỏi **mã Pass** (trong email): dán mã vào. Nếu nó chưa hỏi, gõ `/plugin configure storykit@thegentleminh` rồi dán mã. Mã được lưu trong kho bảo mật của máy, không nằm trong file nào của Blocky StoryKit.
 5. **Khởi động lại Claude Code** rồi gõ **`kiểm tra kết nối`**.
 
 ## 3. Kiểm tra kết nối
 
-Gõ `kiểm tra kết nối` bất cứ lúc nào. Claude trả lời một dòng cho Roblox Studio và một dòng cho StoryKit Pass, ví dụ:
+Gõ `kiểm tra kết nối` bất cứ lúc nào. Claude trả lời một dòng cho Roblox Studio và một dòng cho Blocky StoryKit Pass, ví dụ:
 
-> Đã kết nối Roblox Studio (Baseplate) · Đã kết nối StoryKit Pass · Pass còn hạn đến 31/12/2026.
+> Đã kết nối Roblox Studio (Baseplate) · Đã kết nối Blocky StoryKit Pass · Pass còn hạn đến 31/12/2026.
 
 Nếu có dòng báo lỗi, làm theo hướng dẫn ngay trong câu trả lời:
 - **Chưa kết nối Roblox Studio**: mở Studio, mở một place, bật MCP, gõ lại.
-- **Chưa kết nối StoryKit Pass**: gõ `/plugin`, chọn storykit, nhập lại mã Pass, rồi gõ `/mcp` để kết nối lại.
+- **Chưa kết nối Blocky StoryKit Pass**: gõ `/plugin`, chọn storykit, nhập lại mã Pass, rồi gõ `/mcp` để kết nối lại.
 - **Pass hết hạn**: gia hạn ở trang tài khoản.
 - **Máy chủ không phản hồi**: không phải lỗi của bạn; thử lại sau ít phút. Trong lúc đó Claude vẫn làm được phần cơ bản.
 
@@ -81,7 +81,7 @@ Rồi Claude làm theo thứ tự: tiền đề và tiêu đề → kịch bản
 
 Khi Studio đang quay: **để cửa sổ Studio ở trên cùng, màn hình sáng, không dùng máy**.
 
-Lần đầu, Claude sẽ tải phương pháp StoryKit về thư mục video (mục 5). Thêm câu lệnh mẫu: xem `skills/studio-story-shorts/examples/prompts.md`.
+Lần đầu, Claude sẽ tải phương pháp Blocky StoryKit về thư mục video (mục 5). Thêm câu lệnh mẫu: xem `skills/studio-story-shorts/examples/prompts.md`.
 
 ## 4b. Giọng đọc
 
@@ -97,35 +97,35 @@ Hướng dẫn cài và dùng TTSMaker, VoiceStudio: **thegentleminh.com/ky-nang
 
 Giọng từ ứng dụng khác cũng dùng được: xuất mỗi câu một file theo số trong bảng.
 
-Mẹo: mỗi lần tạo chỉ dán **một câu**; xuất WAV hoặc MP3; mỗi nhân vật giữ một giọng cho cả kênh; làm lại câu nào thì lưu file mới (`012_BA take2.wav`), đừng ghi đè. TTSMaker và VoiceStudio nghe "máy" hơn giọng thật; giọng AI nói chung đọc chậm hơn (khoảng 200 từ/phút): StoryKit có thể tăng tốc cả bài lên 1,2-1,3 lần mà không đổi cao độ.
+Mẹo: mỗi lần tạo chỉ dán **một câu**; xuất WAV hoặc MP3; mỗi nhân vật giữ một giọng cho cả kênh; làm lại câu nào thì lưu file mới (`012_BA take2.wav`), đừng ghi đè. TTSMaker và VoiceStudio nghe "máy" hơn giọng thật; giọng AI nói chung đọc chậm hơn (khoảng 200 từ/phút): Blocky StoryKit có thể tăng tốc cả bài lên 1,2-1,3 lần mà không đổi cao độ.
 
-## 5. StoryKit Pass làm gì
+## 5. Blocky StoryKit Pass làm gì
 
-Plugin StoryKit bạn cài chỉ là phần khởi động: kiểm tra kết nối và tải phương pháp. **Toàn bộ phương pháp** (quy trình 7 bước, cách viết kịch bản, shot plan, thư viện Studio cho máy quay, diễn xuất, khuôn mặt, nhân vật, ánh sáng, công cụ ghép take, giọng, phụ đề, âm thanh) đến từ máy chủ StoryKit Pass, cùng với phần cập nhật liên tục: công thức hook và tiêu đề, kho tiền đề và twist, kịch bản mẫu, công thức mới nhất, danh mục asset đã kiểm tra.
+Plugin Blocky StoryKit bạn cài chỉ là phần khởi động: kiểm tra kết nối và tải phương pháp. **Toàn bộ phương pháp** (quy trình 7 bước, cách viết kịch bản, shot plan, thư viện Studio cho máy quay, diễn xuất, khuôn mặt, nhân vật, ánh sáng, công cụ ghép take, giọng, phụ đề, âm thanh) đến từ máy chủ Blocky StoryKit Pass, cùng với phần cập nhật liên tục: công thức hook và tiêu đề, kho tiền đề và twist, kịch bản mẫu, công thức mới nhất, danh mục asset đã kiểm tra.
 
-- Lần đầu làm video, Claude tải phương pháp về thư mục `.storykit` trong thư mục video (khoảng 110 KB) và báo "Đã tải phương pháp StoryKit bản …". Khi có bản mới, Claude tự tải lại.
+- Lần đầu làm video, Claude tải phương pháp về thư mục `.storykit` trong thư mục video (khoảng 110 KB) và báo "Đã tải phương pháp Blocky StoryKit bản …". Khi có bản mới, Claude tự tải lại.
 - Nếu máy chủ tạm không phản hồi, Claude dùng bản đã lưu, miễn là Pass còn hạn.
-- **Hết Pass:** StoryKit dừng làm video mới. Video và mọi file bạn đã làm vẫn là của bạn.
+- **Hết Pass:** Blocky StoryKit dừng làm video mới. Video và mọi file bạn đã làm vẫn là của bạn.
 - Đừng sửa hay chia sẻ các file trong `.storykit`: chúng chỉ dùng trong máy bạn và sẽ được thay khi tải bản mới.
 
 ## 6. Giới hạn
 
 - Studio phải ở cửa sổ trên cùng và màn hình phải sáng khi quay; nếu không, video bị giật hoặc đen.
-- Mỗi take quay tối đa khoảng 25-30 giây; một video 2 phút cần 5-8 take, StoryKit tự ghép.
+- Mỗi take quay tối đa khoảng 25-30 giây; một video 2 phút cần 5-8 take, Blocky StoryKit tự ghép.
 - Nhân vật là R15 khối với đầu động (dynamic head): miệng mở theo lời, mặt đổi cảm xúc, nhưng không khớp môi từng âm và ngón tay không cử động.
-- Asset miễn phí trên Studio còn ít đồ Việt Nam (chùa, nhà ống, xe bánh mì...). Khi thiếu, StoryKit tìm theo thứ tự: danh mục của StoryKit → tìm trên Creator Store → **chỉ khi cả hai không có mới tạo bằng generate_mesh** (công cụ miễn phí của Roblox; mặc định khuyên dùng, bạn chọn ở bước cài đặt). Lưu ý: **mỗi lần tạo, kể cả tạo lại, sẽ lưu vĩnh viễn một Package riêng trong kho Roblox của bạn và tính vào giới hạn sử dụng tạo mô hình của Roblox.** Chữ trên bảng hiệu do máy tạo bị méo, nên bảng hiệu được thêm chữ riêng sau đó.
+- Asset miễn phí trên Studio còn ít đồ Việt Nam (chùa, nhà ống, xe bánh mì...). Khi thiếu, Blocky StoryKit tìm theo thứ tự: danh mục riêng của nó → tìm trên Creator Store → **chỉ khi cả hai không có mới tạo bằng generate_mesh** (công cụ miễn phí của Roblox; mặc định khuyên dùng, bạn chọn ở bước cài đặt). Lưu ý: **mỗi lần tạo, kể cả tạo lại, sẽ lưu vĩnh viễn một Package riêng trong kho Roblox của bạn và tính vào giới hạn sử dụng tạo mô hình của Roblox.** Chữ trên bảng hiệu do máy tạo bị méo, nên bảng hiệu được thêm chữ riêng sau đó.
 - Một video 2 phút mất khoảng 2-4 giờ Claude làm việc.
-- Avatar và đồ catalogue trong video của bạn thuộc trách nhiệm của bạn theo điều khoản Roblox. Nhân vật không mặc áo/quần từ catalogue sẽ bị Roblox gắn bộ đồ mặc định có logo Roblox: StoryKit luôn mặc đồ cho nhân vật và báo trước khi quay nếu có ai còn thiếu. Không xuất asset ra ngoài Studio, không dùng logo Roblox.
-- StoryKit không hứa lượt xem hay thu nhập; nó giúp bạn tiết kiệm thời gian và kể chuyện tốt hơn.
-- StoryKit được làm bằng Claude Code nên có thể còn lỗi; Claude của bạn sửa được (mục 7).
+- Avatar và đồ catalogue trong video của bạn thuộc trách nhiệm của bạn theo điều khoản Roblox. Nhân vật không mặc áo/quần từ catalogue sẽ bị Roblox gắn bộ đồ mặc định có logo Roblox: Blocky StoryKit luôn mặc đồ cho nhân vật và báo trước khi quay nếu có ai còn thiếu. Không xuất asset ra ngoài Studio, không dùng logo Roblox.
+- Blocky StoryKit không hứa lượt xem hay thu nhập; nó giúp bạn tiết kiệm thời gian và kể chuyện tốt hơn.
+- Blocky StoryKit được làm bằng Claude Code nên có thể còn lỗi; Claude của bạn sửa được (mục 7).
 
 ## 7. Nếu gặp lỗi
 
 Dán câu này vào Claude Code:
 
-> StoryKit vừa bị lỗi: [mô tả bạn thấy gì, ở bước nào]. Hãy giải thích nguyên nhân bằng lời dễ hiểu, đọc lại skill và công cụ liên quan, sửa rồi chạy lại đúng phần bị lỗi. Không đụng vào file gốc của mình ngoài thư mục video này.
+> Blocky StoryKit vừa bị lỗi: [mô tả bạn thấy gì, ở bước nào]. Hãy giải thích nguyên nhân bằng lời dễ hiểu, đọc lại skill và công cụ liên quan, sửa rồi chạy lại đúng phần bị lỗi. Không đụng vào file gốc của mình ngoài thư mục video này.
 
-Claude sẽ giải thích lỗi, sửa và chạy lại. Nếu đó là lỗi của StoryKit, hãy báo cho bọn mình ở **GitHub Issues**: https://github.com/thegentleminh/thegentleminh-skills/issues để mọi người cùng được sửa.
+Claude sẽ giải thích lỗi, sửa và chạy lại. Nếu đó là lỗi của Blocky StoryKit, hãy báo cho bọn mình ở **GitHub Issues**: https://github.com/thegentleminh/thegentleminh-skills/issues để mọi người cùng được sửa.
 
 Lỗi hay gặp: video giật (Studio không ở trên cùng), take đen (màn hình tắt), có khung hình màu hồng (quay lại take đó), nhân vật lún xuống đất (Claude chạy lại bước đặt chân), nhạc lấn giọng (Claude giảm nhạc, không tăng giọng).
 
@@ -133,12 +133,12 @@ Lỗi hay gặp: video giật (Studio không ở trên cùng), take đen (màn h
 
 ## 8. Câu hỏi thường gặp
 
-**StoryKit có tốn Robux không?** Không bắt buộc. Mọi thứ StoryKit dùng là đồ miễn phí hoặc đồ catalogue mặc thử trong Studio. Một số món quần áo trong catalogue giá vài Robux nếu bạn muốn mua cho avatar của mình, nhưng để quay trong Studio thì không cần mua.
+**Blocky StoryKit có tốn Robux không?** Không bắt buộc. Mọi thứ nó dùng là đồ miễn phí hoặc đồ catalogue mặc thử trong Studio. Một số món quần áo trong catalogue giá vài Robux nếu bạn muốn mua cho avatar của mình, nhưng để quay trong Studio thì không cần mua.
 
 **Có cần card RTX không?** Không. Card NVIDIA chỉ giúp bước canh chữ theo giọng chạy nhanh hơn; không có thì chạy bằng CPU, chậm hơn một chút. Roblox Studio chạy tốt trên máy chơi game phổ thông.
 
-**Hết Pass thì video đã làm có còn không?** Còn. Video và mọi file bạn đã làm là của bạn. Hết Pass thì StoryKit dừng làm video mới; gia hạn là dùng tiếp.
+**Hết Pass thì video đã làm có còn không?** Còn. Video và mọi file bạn đã làm là của bạn. Hết Pass thì Blocky StoryKit dừng làm video mới; gia hạn là dùng tiếp.
 
 **Có dùng được cho kênh tiếng Anh không?** Bản này viết cho tiếng Việt (giọng, phụ đề, cách nói). Tiếng Anh: chưa hỗ trợ.
 
-**Video có bị coi là nội dung lặp lại không?** StoryKit có bước chống lặp mẫu: mỗi video mới khác hai video trước về dạng chuyện, câu mở và kiểu kết. Bạn vẫn là người chọn ý tưởng và duyệt kịch bản.
+**Video có bị coi là nội dung lặp lại không?** Blocky StoryKit có bước chống lặp mẫu: mỗi video mới khác hai video trước về dạng chuyện, câu mở và kiểu kết. Bạn vẫn là người chọn ý tưởng và duyệt kịch bản.

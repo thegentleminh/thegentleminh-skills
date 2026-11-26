@@ -1,4 +1,4 @@
-# StoryKit Free: Cài Roblox Studio và kết nối với Claude Code
+# Blocky StoryKit Free: Cài Roblox Studio và kết nối với Claude Code
 
 Hướng dẫn không chính thức cho người làm nội dung trên Roblox Studio. **Không liên kết với Roblox Corporation.**
 
@@ -9,7 +9,7 @@ Sổ tay này giúp bạn cài Roblox Studio và kết nối nó với Claude Co
 - Một tài khoản Roblox (miễn phí).
 - Claude Code đã cài và đăng nhập.
 
-## Cài plugin StoryKit Free
+## Cài plugin Blocky StoryKit Free
 Trong Claude Code gõ:
 `/plugin marketplace add thegentleminh/thegentleminh-skills` rồi `/plugin install storykit-free@thegentleminh`.
 
@@ -17,7 +17,7 @@ Trong Claude Code gõ:
 Dán vào Claude Code:
 > Kiểm tra giúp mình máy đã có Roblox Studio chưa. Nếu chưa thì hướng dẫn mình cài.
 
-Nếu chưa có: **Tải Roblox Studio** từ trang chính thức của Roblox: **https://create.roblox.com/docs/studio/setup** → bấm **Download Studio** → trong hộp thoại bấm **Download Studio** lần nữa → mở file vừa tải (`RobloxStudio.exe` trên Windows) → khi cài xong bấm **Launch Studio** → đăng nhập bằng tài khoản Roblox (chưa có thì tạo ở roblox.com). Chỉ tải Studio từ trang của Roblox; StoryKit không gửi file cài đặt nào.
+Nếu chưa có: **Tải Roblox Studio** từ trang chính thức của Roblox: **https://create.roblox.com/docs/studio/setup** → bấm **Download Studio** → trong hộp thoại bấm **Download Studio** lần nữa → mở file vừa tải (`RobloxStudio.exe` trên Windows) → khi cài xong bấm **Launch Studio** → đăng nhập bằng tài khoản Roblox (chưa có thì tạo ở roblox.com). Chỉ tải Studio từ trang của Roblox; Blocky StoryKit không gửi file cài đặt nào.
 
 ## Bước 2: Mở một place trống
 Mở Studio, ở trang đầu kéo xuống mục **Open a Template** và chọn **Baseplate** (hình). Đừng dùng game thật đang chạy của bạn.
@@ -60,7 +60,7 @@ Báo lỗi cho bọn mình ở **GitHub Issues**: https://github.com/thegentlemi
 ## Xong rồi
 **Giờ bạn đã cài xong Roblox Studio và MCP. Bạn có thể tự hỏi Claude để tìm hiểu cách dùng.**
 
-## Muốn nhanh hơn? StoryKit Pass
-Nếu bạn muốn cách nhanh hơn, đỡ tốn hơn để làm video Short kể chuyện kiểu "Ở thế giới này…" ngay trong Studio, có **StoryKit Pass**: quy trình từ ý tưởng, kịch bản, dựng cảnh, nhân vật diễn, quay đến dựng phim, cùng kho ý tưởng, kịch bản mẫu và công thức được cập nhật thường xuyên. Pass vẫn chạy trên tài khoản Claude của bạn. Xem trên trang StoryKit.
+## Muốn nhanh hơn? Blocky StoryKit Pass
+Nếu bạn muốn cách nhanh hơn, đỡ tốn hơn để làm video Short kể chuyện kiểu "Ở thế giới này…" ngay trong Studio, có **Blocky StoryKit Pass**: quy trình từ ý tưởng, kịch bản, dựng cảnh, nhân vật diễn, quay đến dựng phim, cùng kho ý tưởng, kịch bản mẫu và công thức được cập nhật thường xuyên. Pass vẫn chạy trên tài khoản Claude của bạn. Xem trên trang Blocky StoryKit.
 
-StoryKit không hứa lượt xem hay thu nhập.
+Blocky StoryKit không hứa lượt xem hay thu nhập.
