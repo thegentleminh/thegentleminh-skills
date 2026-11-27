@@ -82,7 +82,7 @@ Rồi Claude làm theo thứ tự: tiền đề và tiêu đề → kịch bản
 
 Khi Studio đang quay: **để cửa sổ Studio ở trên cùng, màn hình sáng, không dùng máy**.
 
-Lần đầu, Claude sẽ tải phương pháp Blocky StoryKit về thư mục video (mục 5). Thêm câu lệnh mẫu: xem `skills/studio-story-shorts/examples/prompts.md`.
+Lần đầu, Claude sẽ tải Blocky StoryKit về thư mục video (mục 5). Thêm câu lệnh mẫu: xem `skills/studio-story-shorts/examples/prompts.md`.
 
 ## 4b. Giọng đọc
 
@@ -102,9 +102,9 @@ Mẹo: mỗi lần tạo chỉ dán **một câu**; xuất WAV hoặc MP3; mỗi
 
 ## 5. Blocky StoryKit Pass làm gì
 
-Plugin Blocky StoryKit bạn cài chỉ là phần khởi động: kiểm tra kết nối và tải phương pháp. **Toàn bộ phương pháp** (quy trình 7 bước, cách viết kịch bản, shot plan, thư viện Studio cho máy quay, diễn xuất, khuôn mặt, nhân vật, ánh sáng, công cụ ghép take, giọng, phụ đề, âm thanh) đến từ máy chủ Blocky StoryKit Pass, cùng với phần cập nhật liên tục: công thức hook và tiêu đề, kho tiền đề và twist, kịch bản mẫu, công thức mới nhất, danh mục asset đã kiểm tra.
+Plugin Blocky StoryKit bạn cài chỉ là phần khởi động: kiểm tra kết nối và tải phần chính của skill. **Phần chính** (quy trình 7 bước, cách viết kịch bản, shot plan, thư viện Studio cho máy quay, diễn xuất, khuôn mặt, nhân vật, ánh sáng, công cụ ghép take, giọng, phụ đề, âm thanh) đến từ máy chủ Blocky StoryKit Pass, cùng với phần cập nhật liên tục: công thức hook và tiêu đề, kho tiền đề và twist, kịch bản mẫu, công thức mới nhất, danh mục asset đã kiểm tra.
 
-- Lần đầu làm video, Claude tải phương pháp về thư mục `.storykit` trong thư mục video (khoảng 110 KB) và báo "Đã tải phương pháp Blocky StoryKit bản …". Khi có bản mới, Claude tự tải lại.
+- Lần đầu làm video, Claude tải phần chính của skill về thư mục `.storykit` trong thư mục video (khoảng 130 KB) và báo "Đã tải Blocky StoryKit bản …". Khi có bản mới, Claude tự tải lại.
 - Nếu máy chủ tạm không phản hồi, Claude dùng bản đã lưu, miễn là Pass còn hạn.
 - **Hết Pass:** Blocky StoryKit dừng làm video mới. Video và mọi file bạn đã làm vẫn là của bạn.
 - Đừng sửa hay chia sẻ các file trong `.storykit`: chúng chỉ dùng trong máy bạn và sẽ được thay khi tải bản mới.

@@ -37,8 +37,8 @@
     {
       "name": "storykit",
       "source": "./plugins/storykit",
-      "description": "Blocky StoryKit (needs a Blocky StoryKit Pass): make Vietnamese 'Ở thế giới này…' story Shorts filmed in Roblox Studio, from a topic to a finished 9:16 video. This is the starter: connection check, setup and a download of the method from the Pass server. Unofficial; not affiliated with Roblox Corporation.",
-      "version": "0.1.2",
+      "description": "Blocky StoryKit (needs a Blocky StoryKit Pass): make Vietnamese 'Ở thế giới này…' story Shorts filmed in Roblox Studio, from a topic to a finished 9:16 video. This is the starter: connection check, setup and a download of the full skill from the Pass server. Unofficial; not affiliated with Roblox Corporation.",
+      "version": "0.1.3",
       "category": "video"
     }
   ]
